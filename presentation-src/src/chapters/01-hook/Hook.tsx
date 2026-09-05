@@ -3,7 +3,7 @@ import "./Hook.css";
 import { narrations } from "./narrations";
 
 // Real asset
-const IMG_DOC = "/assets/01-hook-10k-mockup.png";
+const IMG_DOC = `${import.meta.env.BASE_URL}assets/01-hook-10k-mockup.png`;
 
 export default function Hook({ step }: ChapterStepProps) {
   if (step === 0) return <HookS1 />;
