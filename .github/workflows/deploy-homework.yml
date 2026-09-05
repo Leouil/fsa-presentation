@@ -22,9 +22,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -44,11 +41,27 @@ jobs:
         working-directory: ./presentation-src
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './presentation-src/dist'
+      - name: Determine homework folder
+        id: hw
+        run: |
+          HW="${{ github.event.inputs.homework || '01' }}"
+          echo "folder=homework-${HW}" >> $GITHUB_OUTPUT
+          echo "url=https://leouil.github.io/fsa-presentation/homework-${HW}/" >> $GITHUB_OUTPUT
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Prepare deployment
+        run: |
+          mkdir -p _site
+          cp -r presentation-src/dist/* _site/${{ steps.hw.outputs.folder }}/
+
+      - name: Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          keep_files: true
+
+      - name: Report URL
+        run: echo "Deployed to ${{ steps.hw.outputs.url }}"
