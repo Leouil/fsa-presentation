@@ -1,0 +1,168 @@
+/* Chapter 4 — taxonomy */
+.tx-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--shell);
+}
+.tx-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--surface-pattern);
+  background-size: var(--surface-pattern-size);
+  opacity: 0.25;
+}
+
+.tx-hero {
+  text-align: center;
+  animation: tx-enter 1.0s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes tx-enter {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.tx-taxonomy-img {
+  width: min(96%, 1750px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 28px rgba(67,48,43,0.12);
+}
+.tx-taxonomy-label {
+  font-family: var(--font-mono);
+  font-size: clamp(20px, 2.5vw, 30px);
+  color: var(--text-mute);
+  margin-top: 16px;
+  letter-spacing: 0.06em;
+}
+
+.tx-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: tx-enter 0.8s both;
+}
+.tx-tree__node {
+  font-family: var(--font-body);
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-align: center;
+}
+.tx-tree__node--root {
+  font-size: clamp(32px, 2.2vw, 32px);
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--accent);
+}
+.tx-tree__branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-left: 60px;
+  border-left: 2px solid var(--accent-glow);
+}
+.tx-tree__node--mid {
+  font-size: clamp(32px, 1.8vw, 26px);
+  color: var(--text-2);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-glow);
+}
+.tx-tree__node--leaf {
+  font-size: clamp(18px, 1.5vw, 22px);
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.tx-cash-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 16px 16px 0;
+  padding: 32px 40px;
+  width: min(96%, 1700px);
+  box-shadow: 0 4px 20px rgba(67,48,43,0.08);
+  animation: tx-enter 0.8s both;
+}
+.tx-cash-card__tag {
+  font-family: var(--font-mono);
+  font-size: clamp(32px, 2.5vw, 38px);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.tx-cash-card__def {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 1.4vw, 18px);
+  color: var(--text-2);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.tx-cash-card__footnote {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 14px);
+  color: var(--text-mute);
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+
+.tx-users {
+  display: flex;
+  gap: 28px;
+  animation: tx-enter 0.6s both;
+}
+.tx-user {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  width: 150px;
+  box-shadow: 0 2px 16px rgba(67,48,43,0.06);
+  animation: tx-enter 0.5s both;
+}
+.tx-user__icon { font-size: 36px; margin-bottom: 10px; }
+.tx-user__label {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.tx-user__desc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-mute);
+}
+
+.tx-narration {
+  position: absolute;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82%;
+  text-align: center;
+  animation: tx-fade 0.8s 0.6s both;
+}
+@keyframes tx-fade {
+  from { opacity:0; transform:translateX(-50%) translateY(10px); }
+  to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+.tx-narration p {
+  font-family: var(--font-body);
+  font-size: clamp(18px, 2.2vw, 28px);
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}

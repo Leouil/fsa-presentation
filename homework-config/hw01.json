@@ -1,0 +1,9 @@
+{
+  "id": "homework-01",
+  "title": "FSA 1: Introduction to XBRL",
+  "description": "Learn how to read SEC 10-K filings and extract financial data using XBRL tags",
+  "chapters": ["01-hook","02-what-is-xbrl","03-sec-mandate","04-taxonomy","05-hands-on-setup","06-balance-sheet-numbers","07-income-statement","08-verify","09-beyond-numbers"],
+  "totalSteps": 50,
+  "videoOverlayStep": 35,
+  "videoOverlayLabel": "balance-sheet-numbers / step 9"
+}

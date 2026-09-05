@@ -1,0 +1,161 @@
+/* Chapter 2 — what-is-xbrl */
+.xs-stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--shell);
+}
+
+.xs-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--surface-pattern);
+  background-size: var(--surface-pattern-size);
+  opacity: 0.25;
+}
+
+.xs-hero-title {
+  animation: xs-in 0.8s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes xs-in {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.xs-xbrl-img {
+  width: min(96%, 1700px);
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(67,48,43,0.12);
+}
+
+.xs-xml-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: xs-in 0.8s both;
+}
+.xs-xml-tag {
+  font-family: var(--font-mono);
+  font-size: clamp(32px, 2.5vw, 36px);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-glow);
+  border-radius: 10px;
+  padding: 16px 32px;
+  letter-spacing: 0.02em;
+}
+.xs-xml-arrow {
+  font-size: 28px;
+  color: var(--text-mute);
+  animation: xs-pulse 1.5s ease-in-out infinite;
+}
+@keyframes xs-pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+.xs-xml-label {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+.xs-xml-sublabel {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-mute);
+}
+
+.xs-tags-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: min(96%, 1700px);
+  animation: xs-in 0.6s both;
+}
+.xs-tag-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: xs-in 0.5s both;
+  box-shadow: 0 2px 12px rgba(67,48,43,0.06);
+}
+.xs-tag-card__doc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-mute);
+}
+.xs-tag-card__arrow {
+  color: var(--accent);
+  font-size: 18px;
+}
+.xs-tag-card__tag {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.xs-tag-card__xbrl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.xs-users {
+  display: flex;
+  gap: 24px;
+  animation: xs-in 0.6s both;
+}
+.xs-user-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  width: 140px;
+  box-shadow: 0 2px 16px rgba(67,48,43,0.07);
+  animation: xs-in 0.5s both;
+}
+.xs-user-card__icon { font-size: 32px; margin-bottom: 8px; }
+.xs-user-card__label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: pre-line;
+  margin-bottom: 4px;
+}
+.xs-user-card__desc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-mute);
+}
+
+.xs-narration {
+  position: absolute;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82%;
+  text-align: center;
+  animation: xs-fade-up 0.8s 0.6s both;
+}
+@keyframes xs-fade-up {
+  from { opacity:0; transform:translateX(-50%) translateY(12px); }
+  to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+.xs-narration p {
+  font-family: var(--font-body);
+  font-size: clamp(32px, 1.6vw, 24px);
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}
