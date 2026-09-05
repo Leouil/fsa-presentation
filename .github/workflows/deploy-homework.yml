@@ -1,0 +1,57 @@
+name: Build & Deploy Presentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'presentation-src/**'
+      - 'homework-instructions/**'
+      - 'homework-config/**'
+  workflow_dispatch:
+    inputs:
+      homework:
+        description: 'Homework number (e.g. 01, 02)'
+        required: true
+        default: '01'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: presentation-src/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./presentation-src
+        run: npm ci
+
+      - name: Build presentation
+        working-directory: ./presentation-src
+        run: npm run build
+
+      - name: Determine homework folder
+        id: hw
+        run: |
+          HW="${{ github.event.inputs.homework || '01' }}"
+          echo "folder=homework-${HW}" >> $GITHUB_OUTPUT
+
+      - name: Prepare deployment root
+        run: |
+          mkdir -p _site
+          mv presentation-src/dist _site/${{ steps.hw.outputs.folder }}
+
+      - name: Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
