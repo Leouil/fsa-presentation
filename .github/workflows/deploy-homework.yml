@@ -14,9 +14,17 @@ on:
         required: true
         default: '01'
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -42,16 +50,12 @@ jobs:
           HW="${{ github.event.inputs.homework || '01' }}"
           echo "folder=homework-${HW}" >> $GITHUB_OUTPUT
 
-      - name: Prepare deployment root
-        run: |
-          mkdir -p _site
-          mv presentation-src/dist _site/${{ steps.hw.outputs.folder }}
-
-      - name: Deploy to GitHub Pages (gh-pages)
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: gh-pages
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          path: './presentation-src/dist'
+          name: homework-site-${{ steps.hw.outputs.folder }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
