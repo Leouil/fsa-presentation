@@ -10747,7 +10747,7 @@ function HookS2() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "hk-xbrl-name",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/02-xbrl-acronym.png",
+				src: `./assets/02-xbrl-acronym.png`,
 				alt: "XBRL — eXtensible Business Reporting Language",
 				className: "hk-xbrl-img"
 			})
@@ -10838,7 +10838,7 @@ function XS1() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "xs-hero-title",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/02-xbrl-acronym.png",
+				src: `./assets/02-xbrl-acronym.png`,
 				alt: "XBRL full name",
 				className: "xs-xbrl-img"
 			})
@@ -11185,7 +11185,7 @@ function T1() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "tx-hero",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/03-taxonomy-tree.png",
+				src: `./assets/03-taxonomy-tree.png`,
 				alt: "US GAAP Taxonomy",
 				className: "tx-taxonomy-img"
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -11325,7 +11325,7 @@ function HS1() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "hs-screenshot-wrap",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/04-edgar-viewer.png",
+				src: `./assets/04-edgar-viewer.png`,
 				alt: "SEC EDGAR 10-K inline viewer",
 				className: "hs-screenshot"
 			})
@@ -11371,7 +11371,7 @@ function HS3() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "hs-screenshot-wrap",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					src: "/assets/05-edgar-xbrl-popup.png",
+					src: `./assets/05-edgar-xbrl-popup.png`,
 					alt: "EDGAR 10-K: Total Current Assets with XBRL tag popup",
 					className: "hs-screenshot"
 				})
@@ -11399,7 +11399,7 @@ function HS4() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "hs-sheet-wrap",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/05-sheet-mockup.png",
+				src: `./assets/05-sheet-mockup.png`,
 				alt: "Financial Statement Analysis Google Sheet",
 				className: "hs-screenshot"
 			})
@@ -11585,7 +11585,7 @@ function BSRows({ step }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "bs-screenshot-wrap",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					src: "/assets/06-bs-6rows.png",
+					src: `./assets/06-bs-6rows.png`,
 					alt: "Balance Sheet",
 					className: "bs-screenshot"
 				})
@@ -11711,7 +11711,7 @@ function BSVideo({ mode }) {
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("video", {
 					ref: videoRef,
 					className: "bs-video",
-					src: "/assets/XBRL-add-new-lines.mp4",
+					src: `./assets/XBRL-add-new-lines.mp4`,
 					controls: true,
 					playsInline: true,
 					autoPlay: mode === "auto",
@@ -11998,7 +11998,7 @@ function BN1() {
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "bn-screenshot-wrap",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/assets/07-10k-index.png",
+				src: `./assets/07-10k-index.png`,
 				alt: "Tesla 10-K Index Page",
 				className: "bn-screenshot"
 			})
@@ -12224,7 +12224,7 @@ function App() {
 	const Cmp = ch.Component;
 	const stepText = ch.narrations[stepper.cursor.step] ?? "";
 	const { mode, cycleMode, autoStarted, setAutoStarted } = useAutoMode();
-	const audioSrc = mode === "manual" || stepText === "" ? null : `/audio/${ch.id}/${stepper.cursor.step + 1}.mp3`;
+	const audioSrc = mode === "manual" || stepText === "" ? null : `./audio/${ch.id}/${stepper.cursor.step + 1}.mp3`;
 	const onAutoAdvance = (0, import_react.useCallback)(() => stepper.next(), [stepper]);
 	useAudioPlayer({
 		src: audioSrc,
