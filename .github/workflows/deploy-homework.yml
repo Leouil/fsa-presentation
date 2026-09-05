@@ -44,17 +44,10 @@ jobs:
         working-directory: ./presentation-src
         run: npm run build
 
-      - name: Determine homework folder
-        id: hw
-        run: |
-          HW="${{ github.event.inputs.homework || '01' }}"
-          echo "folder=homework-${HW}" >> $GITHUB_OUTPUT
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './presentation-src/dist'
-          name: homework-site-${{ steps.hw.outputs.folder }}
 
       - name: Deploy to GitHub Pages
         id: deployment
